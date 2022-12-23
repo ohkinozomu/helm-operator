@@ -21,7 +21,7 @@ jobs:
           rm -rf go${GO_VERSION}.linux-amd64.tar.gz
           go version
       - name: Update packages
-        timeout-minutes: 10m
+        timeout-minutes: 10
         run: |
           # Kill any apt-get processes that may be hanging due to
           # networking related issues, and thus holding on to
