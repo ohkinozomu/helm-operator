@@ -50,3 +50,5 @@ docker/fluxy-dumbconf.priv
 test/profiles
 test/bin/
 test/e2e/bats
+
+.vscode
