@@ -6,7 +6,6 @@ jobs:
     env:
       E2E_KIND_CLUSTER_NUM: 4
       GO_VERSION: 1.16.15
-      GOPATH: /home/circleci/go
       GOPROXY: https://proxy.golang.org
       PATH: /bin:/usr/bin:/usr/local/go/bin:/home/circleci/go/bin
     steps:
