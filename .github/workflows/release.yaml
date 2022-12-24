@@ -1,0 +1,50 @@
+name: Publish Docker image
+on:
+  release:
+    types: [published]
+jobs:
+  push_to_registry:
+    name: Push Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    env:
+      E2E_KIND_CLUSTER_NUM: 4
+      GO_VERSION: 1.16.15
+      GOPROXY: https://proxy.golang.org
+      PATH: /bin:/usr/bin:/usr/local/go/bin:/home/circleci/go/bin
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Golang
+        run: |
+          curl -OL https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz
+          tar -xf go${GO_VERSION}.linux-amd64.tar.gz
+          sudo rm -rf /usr/local/go
+          sudo mv go /usr/local
+          mkdir -p "$HOME/go/bin"
+          rm -rf go${GO_VERSION}.linux-amd64.tar.gz
+          go version
+      - name: Update packages
+        timeout-minutes: 10
+        run: |
+          # Kill any apt-get processes that may be hanging due to
+          # networking related issues, and thus holding on to
+          # `/var/lib/apt/lists/lock`.
+          # https://support.circleci.com/hc/en-us/articles/360021256633-Apt-Get-Update-Is-Slow-Or-Locked
+          sudo killall apt-get || true
+
+          sudo apt-get update
+          sudo apt-get install jq
+          git version
+          docker version
+          jq --version
+      - run: make check-generated
+      - run: make all
+      - name: Login to DockerHub
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v2 
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Push
+        run: |
+          docker tag "docker.io/ohkinozomu/helm-operator:$(docker/image-tag)" "docker.io/ohkinozomu/helm-operator-prerelease:$(docker/image-tag)"
+          docker push "docker.io/ohkinozomu/helm-operator:$(docker/image-tag)"

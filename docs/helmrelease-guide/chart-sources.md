@@ -241,7 +241,7 @@ available `helm2` and `helm3` binaries can then be used to install the plugin:
 spec:
  initContainers:
  - name: helm-3-downloader-plugin
-   image: docker.io/fluxcd/helm-operator:<tag>
+   image: docker.io/ohkinozomu/helm-operator:<tag>
    imagePullPolicy: IfNotPresent
    command:
      - 'sh'
@@ -267,7 +267,7 @@ downloaded plugin becomes available:
 spec:
  containers:
  - name: flux-helm-operator
-   image: docker.io/fluxcd/helm-operator:<tag>
+   image: docker.io/ohkinozomu/helm-operator:<tag>
    ...
    volumeMounts:
    - name: helm-plugins-cache
