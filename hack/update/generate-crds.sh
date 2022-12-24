@@ -17,7 +17,7 @@
 # limitations under the License.
 
 # 'go generate's kind, using tools from vendor (go-bindata)
-set -o errexit -o nounset -o pipefail
+set -o errexit -o nounset -o pipefail -x
 
 # cd to the repo root
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd -P)"
