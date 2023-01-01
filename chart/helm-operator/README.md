@@ -63,7 +63,7 @@ chart and their default values.
 
 | Parameter                                         | Default                                              | Description
 | -----------------------------------------------   | ---------------------------------------------------- | ---
-| `image.repository`                                | `docker.io/fluxcd/helm-operator`                     | Image repository
+| `image.repository`                                | `docker.io/ohkinozomu/helm-operator`                     | Image repository
 | `image.tag`                                       | `{{ version }}`                                      | Image tag
 | `image.pullPolicy`                                | `IfNotPresent`                                       | Image pull policy
 | `image.pullSecret`                                | `None`                                               | Image pull secret

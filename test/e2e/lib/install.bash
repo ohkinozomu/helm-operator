@@ -44,7 +44,7 @@ function install_helm_operator_with_helm() {
     --wait \
     --namespace "${E2E_NAMESPACE}" \
     --set chartsSyncInterval=30s \
-    --set image.repository=docker.io/fluxcd/helm-operator \
+    --set image.repository=docker.io/ohkinozomu/helm-operator \
     --set image.tag=latest \
     --set git.pollInterval=3s \
     --set git.config.secretName=gitconfig \
