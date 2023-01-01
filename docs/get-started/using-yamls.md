@@ -24,7 +24,7 @@ First, install the `HelmRelease` Custom Resource Definition. By adding this CRD
 it will be possible to define `HelmRelease` resources on the cluster:
 
 ```sh
-kubectl apply -f https://raw.githubusercontent.com/fluxcd/helm-operator/1.4.4/deploy/crds.yaml
+kubectl apply -f https://raw.githubusercontent.com/ohkinozomu/helm-operator/v1.4.5/deploy/crds.yaml
 ```
 
 Proceed to create the `flux` namespace, this is the namespace the Helm Operator
