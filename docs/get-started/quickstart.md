@@ -36,7 +36,7 @@ kubectl create ns flux
 Using `helm`, first add the Flux Helm repository:
 
 ```sh
-helm repo add fluxcd https://charts.fluxcd.io
+helm repo add fluxcd https://ohkinozomu.github.io/helm-operator/
 ```
 
 Next, install the Helm Operator using the available Helm chart:

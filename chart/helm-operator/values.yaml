@@ -5,7 +5,7 @@ fullnameOverride: ""
 
 image:
   repository: docker.io/ohkinozomu/helm-operator
-  tag: 1.4.4
+  tag: 1.4.6
   pullPolicy: IfNotPresent
   pullSecret:
 
